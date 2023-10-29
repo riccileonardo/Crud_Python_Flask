@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Links para Instalação do BootStrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <title>Bem Vindo a Tesla!</title>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-tansparent">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"></a>
+          <img src="tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-dark" aria-current="page" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="cadastro.html">Veículo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="relatorios.html">Relatórios</a>
+              </li>
+            </ul>
+              <button type="button" class="btn btn-outline-danger">Sair</button>
+          </div>
+        </div>
+      </nav>
+  </header>
+<body>
+    <div class="container mt-4 mb-2">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form>
+              <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input type="text" class="form-control" id="marca">
+              <div class="form-group">
+                  <label for="ano">Ano:</label>
+                  <input type="text" class="form-control text-left" id="ano" minlength="4" maxlength="4">
+              </div>                                            
+              <div class="form-group">
+                <label for="placa">Placa:</label>
+                <input type="text" class="form-control text-left" id="placa" inlength="7" maxlength="7" title="Digite exatamente 7 caracteres">
+              </div>          
+              <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input type="email" class="form-control" id="modelo">
+              </div>
+              <div class="form-group">
+                <label for="quilometragem">Quilometragem:</label>
+                <input type="email" class="form-control" id="quilometragem">
+              </div>
+              <div class="form-group">
+                <label for="cor">Cor:</label>
+                <input type="email" class="form-control" id="cor">
+              </div>
+              <div class="form-group mt-1,5">
+                <label for="transmissao">Transmissão</label>
+                <select class="form-select" id="transmissao">
+                  <option value="null"></option>
+                  <option value="automatico">Automático</option>
+                  <option value="manual">Manual</option>
+                </select>
+              </div>
+              <div class="form-group mt-1,5">
+                <label for="classificacao">Classificação</label>
+                <select class="form-select" id="classificacao">
+                  <option value="null"></option>
+                  <option value="usado">Usado</option>
+                  <option value="semi-novo">Semi-novo</option>
+                  <option value="novo">Novo</option>
+                </select>
+              </div>
+              <div class="form-group mt-1.5">
+                <label for="tipo">Tipo</label>
+                <select class="form-select" id="tipo">
+                  <option value="null"></option>
+                  <option value="combustao">Combustão</option>
+                  <option value="eletrico">Elétrico</option>
+                  <option value="hibrido">Híbrido</option>
+                </select>
+              </div>
+                <div class="form-group mt-1.5">
+                  <label for="combustivel">Combustivel</label>
+                  <select class="form-select" id="tipo">
+                    <option value="null"></option>
+                    <option value="combustao">Combustão</option>
+                    <option value="eletrico">Elétrico</option>
+                    <option value="hibrido">Híbrido</option>
+                  </select>
+                </div>
+              <button type="submit" class="btn btn-dark mt-2">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>    
+</html>
