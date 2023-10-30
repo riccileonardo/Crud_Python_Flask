@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary bg-tansparent">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"></a>
-            <img src="tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
+            <img src="Imagens/tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,5 +38,45 @@
     </nav>
 </header>
 <body>
+    <form class="container mt-4">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="row justify-content-center mt-4">Relatórios</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-12 mb-2">
+            <label for="inlineFormSelectPref" class="form-label">Selecione o Filtro</label>
+            <select class="form-select" id="inlineFormSelectPref" name="filtro">
+              <option value="null">Selecione um filtro</option>
+              <option value="1">Marca</option>
+              <option value="2">Ano</option>
+              <option value="3">Placa</option>
+              <option value="4">Modelo</option>
+              <option value="5">Quilometragem</option>
+              <option value="6">Transmissão</option>
+              <option value="7">Classificação</option>
+              <option value="8">Tipo</option>
+              <option value="9">Combustível</option>
+            </select>
+          </div>
+            <div class="col-lg-3 col-md-4 col-12 mb-2">
+                <label for="inlineFormInputName" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="inlineFormInputName" name="nome">
+            </div>
+          <div class="col-lg-2 col-md-4 col-12 mb-2">
+            <label for="startDate" class="form-label">Data de Início</label>
+            <input type="date" class="form-control" id="startDate" name="startDate">
+          </div>
+          <div class="col-lg-2 col-md-4 col-12 mb-2">
+            <label for="endDate" class="form-label">Data de Término</label>
+            <input type="date" class="form-control" id="endDate" name="endDate">
+          </div>
+          <div class="col-lg-2 col-md-4 col-12 mb-2">
+            <button type="submit" class="btn btn-dark btn-block">Buscar</button>
+          </div>
+        </div>
+      </form>
+      
 </body>
 </html>

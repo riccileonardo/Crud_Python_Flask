@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary bg-tansparent">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"></a>
-          <img src="tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
+          <img src="Imagens/tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -24,7 +24,7 @@
                 <a class="nav-link text-dark" aria-current="page" href="home.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="cadastro.html">Veículo</a>
+                <a class="nav-link text-dark" href="veiculos.html">Veículo</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-dark" href="relatorios.html">Relatórios</a>
@@ -42,22 +42,64 @@
             <form>
               <div class="form-group">
                 <label for="marca">Marca:</label>
-                <input type="text" class="form-control" id="marca">
+                <select class="form-select" id="marca">
+                  <option value="null"></option>
+                  <option value="tesla">Tesla</option>
+                  <option value="ford">Ford</option>
+                  <option value="chevrolet">Chevrolet</option>
+                  <option value="volkswagen">Volkswagen</option>
+                  <option value="fiat">Fiat</option>
+                  <option value="renault">Renault</option>
+                  <option value="toyota">Toyota</option>
+                  <option value="honda">Honda</option>
+                  <option value="hyundai">Hyundai</option>
+                  <option value="nissan">Nissan</option>
+                  <option value="jeep">Jeep</option>
+                  <option value="kia">Kia</option>
+                  <option value="bmw">BMW</option>
+                  <option value="mercedes-benz">Mercedes-Benz</option>
+                  <option value="audi">Audi</option>
+                  <option value="land-rover">Land Rover</option>
+                  <option value="volvo">Volvo</option>
+                  <option value="porsche">Porsche</option>
+                  <option value="jaguar">Jaguar</option>
+                  <option value="mini">Mini</option>
+                  <option value="lexus">Lexus</option>
+                  <option value="subaru">Subaru</option>
+                  <option value="chery">Chery</option>
+                  <option value="jac">JAC</option>
+                  <option value="troller">Troller</option>
+                  <option value="ferrari">Ferrari</option>
+                  <option value="lamborghini">Lamborghini</option>
+                  <option value="maserati">Maserati</option>
+                  <option value="lotus">Lotus</option>
+                  <option value="bentley">Bentley</option>
+                  <option value="rolls-royce">Rolls-Royce</option>
+                  <option value="aston-martin">Aston Martin</option>
+                  <option value="bugatti">Bugatti</option>
+                  <option value="pagan">Pagan</option>
+                  <option value="mclaren">McLaren</option>
+                  <option value="ram">RAM</option>
+                  <option value="lotus">Lotus</option>
+                  <option value="bentley">Bentley</option>
+                  <option value="rolls-royce">Rolls-Royce</option>
+                  <option value="aston-martin">Aston Martin</option>
+                </select>
+              </div>
               <div class="form-group">
                   <label for="ano">Ano:</label>
-                  <input type="text" class="form-control text-left" id="ano" minlength="4" maxlength="4">
-              </div>                                            
+                  <input type="text" class="form-control" id="ano">                                       
               <div class="form-group">
                 <label for="placa">Placa:</label>
                 <input type="text" class="form-control text-left" id="placa" inlength="7" maxlength="7" title="Digite exatamente 7 caracteres">
               </div>          
               <div class="form-group">
                 <label for="modelo">Modelo:</label>
-                <input type="email" class="form-control" id="modelo">
+                <input type="text" class="form-control" id="modelo">
               </div>
               <div class="form-group">
                 <label for="quilometragem">Quilometragem:</label>
-                <input type="email" class="form-control" id="quilometragem">
+                <input type="number" class="form-control" id="quilometragem">
               </div>
               <div class="form-group">
                 <label for="cor">Cor:</label>
@@ -93,9 +135,15 @@
                   <label for="combustivel">Combustivel</label>
                   <select class="form-select" id="tipo">
                     <option value="null"></option>
-                    <option value="combustao">Combustão</option>
-                    <option value="eletrico">Elétrico</option>
-                    <option value="hibrido">Híbrido</option>
+                    <option value="eletricidade">Eletricidade</option>
+                    <option value="etanol">Etanol</option>
+                    <option value="gasolina">Gasolina</option>
+                    <option value="diesel">Diesel</option>
+                    <option value="flex">Flex</option>
+                    <option value="eletricidade-etanol">Eletricidade-Etanol</option>
+                    <option value="eletricidade-gasolina">Eletricidade-Gasolina</option>
+                    <option value="eletricidade-diesel">Eletricidade-Diesel</option>
+                    <option value="eletricidade-flex">Eletricidade-Flex</option>
                   </select>
                 </div>
               <button type="submit" class="btn btn-dark mt-2">Enviar</button>
