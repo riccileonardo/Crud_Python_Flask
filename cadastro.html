@@ -51,45 +51,45 @@
   <div class="container mt-4 mb-2">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form>
+        <form action="home.html" method="post">
           <div class="form-group">
             <label for="ano">Ano:</label>
-            <input type="text" class="form-control" id="ano">
+            <input type="number" class="form-control" id="ano" name="ano">
             <div class="form-group">
               <label for="placa">Placa:</label>
-              <input type="text" class="form-control text-left" id="placa" inlength="7" maxlength="7"
+              <input type="text" name="placa" class="form-control text-left" id="placa" inlength="7" maxlength="7"
                 title="Digite exatamente 7 caracteres">
             </div>
             <div class="form-group">
               <label for="modelo">Modelo:</label>
-              <input type="text" class="form-control" id="modelo">
+              <input type="text" class="form-control" id="modelo" name="modelo">
             </div>
             <div class="form-group">
               <label for="quilometragem">Quilometragem:</label>
-              <input type="number" class="form-control" id="quilometragem">
+              <input type="number" class="form-control" id="quilometragem" name="quilometragem">
             </div>
             <div class="form-group">
               <label for="cor">Cor:</label>
-              <input type="email" class="form-control" id="cor">
+              <input type="text" class="form-control" id="cor" name="cor">
             </div>
             <div class="form-group">
               <label for="marca">Marca:</label>
-              <select class="form-select" id="marca">
+              <select class="form-select" id="marca" name="marca">
                 <!--Inserir o For do Backend -->
-                <option value="null"></option>
+                <option value="1">Qualquer</option>
+                <option value="xptoo">Qualquer2</option>
               </select>
             </div>
             <div class="form-group mt-1,5">
               <label for="transmissao">Transmissão</label>
-              <select class="form-select" id="transmissao">
-                <option value="null"></option>
+              <select class="form-select" id="transmissao" name="transmissao">
                 <option value="automatico">Automático</option>
                 <option value="manual">Manual</option>
               </select>
             </div>
             <div class="form-group mt-1,5">
               <label for="classificacao">Classificação</label>
-              <select class="form-select" id="classificacao">
+              <select class="form-select" id="classificacao" name="classificacao">
                 <option value="null"></option>
                 <option value="usado">Usado</option>
                 <option value="semi-novo">Semi-novo</option>
@@ -98,7 +98,7 @@
             </div>
             <div class="form-group mt-1.5">
               <label for="tipo">Tipo</label>
-              <select class="form-select" id="tipo">
+              <select class="form-select" id="tipo" name="tipo">
                 <option value="null"></option>
                 <option value="combustao">Combustão</option>
                 <option value="eletrico">Elétrico</option>
