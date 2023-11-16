@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="main.css">
     <title>Bem Vindo a Tesla!</title>
 </head>
-<header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-tansparent">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"></a>
-            <img src="Imagens/tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" aria-current="page" href="home.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="veiculos.html">Cadastro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="relatorios.html">Relatórios</a>
-                    </li>
-                </ul>
-                <a href="login.html" class="btn btn-outline-danger">Sair</a>
-            </div>
-        </div>
-    </nav>
-</header>
 <body>
+  {% extends '_menu.html' %}
   <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
@@ -54,30 +30,29 @@
         </div>
         <div class="col-md-6">
           <div class="image-container">
-              <!-- Início do script 01 (Carrossel) -->
               <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" >
-                <img src="Imagens/tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
+                <img src="../static/Imagens/tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
                   <div class="carousel-inner">
                       <div class="carousel-item active" data-bs-interval="1000">
-                          <img src="Imagens/Model-Y.png" class="d-block w-100" alt="Tesla Modelo Y">
+                        <img src="../static/Imagens/Model-Y.png" class="d-block w-100" alt="Tesla Modelo Y">
                           <div class="carousel-caption d-none d-md-block">
                               <h5 class="carousel-text">Tesla Modelo Y</h5>
                           </div>
                       </div>
                       <div class="carousel-item" data-bs-interval="2000">
-                          <img src="Imagens/Model-X.png" class="d-block w-100" alt="Tesla Modelo X">
+                         <img src="../static/Imagens/Model-X.png" class="d-block w-100" alt="Tesla Modelo X">
                           <div class="carousel-caption d-none d-md-block">
                               <h5 class="carousel-text">Tesla Modelo X</h5>
                           </div>
                       </div>
                       <div class="carousel-item" data-bs-interval="3000">
-                          <img src="Imagens/Model-S.png" class="d-block w-100" alt="Tesla Modelo S">
+                          <img src="../static/Imagens/Model-S.png" class="d-block w-100" alt="Tesla Modelo S">
                           <div class="carousel-caption d-none d-md-block">
                               <h5 class="carousel-text">Tesla Modelo S</h5>
                           </div>
                       </div>
                       <div class="carousel-item" data-bs-interval="4000">
-                          <img src="Imagens/Model-3.png" class="d-block w-100" alt="Tesla Modelo 3">
+                          <img src="../static/Imagens/Model-3.png" class="d-block w-100" alt="Tesla Modelo 3">
                           <div class="carousel-caption d-none d-md-block">
                               <h5 class="carousel-text">Tesla Modelo 3</h5>
                           </div>
@@ -126,3 +101,4 @@
 </style>
 </body>
 </html>
+

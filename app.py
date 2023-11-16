@@ -1,71 +1,76 @@
-from flask import Flask, request
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, request, render_template, redirect, url_for, session
+import mysql.connector # Biblioteca para conexão  e consulta do banco MySQL
+import hashlib # Biblioteca para criptografar senha
 
-app = Flask(__name)
+app = Flask(__name__)
+app.secret_key = '123123'
 
-# Configurações do banco de dados MySQL
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://127.0.0.1:root@localhost:3306/trabalho_conclusao'
-db = SQLAlchemy(app)
+db = mysql.connector.connect( #db agora é a variavel do meu banco
+    host="localhost",
+    user="root",
+    passwd="root",
+    database="trabalho_conclusao"
+)
+cursor = db.cursor() #cursor é a variavel que vai executar os comandos(consulta, select, delete...) no banco
 
-class Usuario(db.Model):
-    id_usuario = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    email = db.Column(db.String(45), nullable=True)
-    senha = db.Column(db.String(45), nullable=True)
+# Função para criptografar senha usando SHA-256
+def encrypt_password(password):
+    sha256 = hashlib.sha256()
+    sha256.update(password.encode('utf-8'))
+    return sha256.hexdigest() # Retorna a senha criptografada em hexadecimal
 
-class Transmissao(db.Model):
-    id_transmissao = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nome = db.Column(db.String(45), nullable=True)
-
-class Classificacao(db.Model):
-    id_classificacao = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nome = db.Column(db.String(45), nullable=True)
-
-class Tipo(db.Model):
-    id_tipo = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nome = db.Column(db.String(45), nullable=True)
-
-class Marca(db.Model):
-    id_marca = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nome = db.Column(db.String(45), nullable=True)
-
-class Veiculo(db.Model):
-    idVeiculo = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    placa = db.Column(db.String(45), nullable=True)
-    quilometragem = db.Column(db.String(45), nullable=True)
-    cor = db.Column(db.String(45), nullable=True)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.id_usuario'))
-    id_transmissao = db.Column(db.Integer, db.ForeignKey('transmissao.id_transmissao'))
-    id_classificacao = db.Column(db.Integer, db.ForeignKey('classificacao.id_classificacao'))
-    id_tipo = db.Column(db.Integer, db.ForeignKey('tipo.id_tipo'))
-    id_marca = db.Column(db.Integer, db.ForeignKey('marca.id_marca'))
-
-@app.route('/processar', methods=['POST'])
-
-def processar_formulario():
-    if request.method == 'POST':
-        # Obter os dados do formulário
-        ano = request.form['ano']  
-        placa = request.form['placa']
-        modelo = request.form['modelo']
-        quilometragem = request.form['quilometragem']
-        cor = request.form['cor']
-        marca = request.form['marca']
-        transmissao = request.form['transmissao']
-        classificacao = request.form['classificacao']
-        tipo = request.form['tipo']
-
-        # Crie uma instância do modelo Veiculo para inserir no banco de dados
-        novo_veiculo = Veiculo(placa=placa, quilometragem=quilometragem, cor=cor, id_usuario=1, id_transmissao=1, id_classificacao=1, id_tipo=1, id_marca=1)
-
-        try:
-            # Adicionar o novo veículo ao banco de dados
-            db.session.add(novo_veiculo)
-            db.session.commit()
-            return "Dados inseridos com sucesso no banco de dados!"
-        except Exception as e:
-            return "Erro ao inserir dados no banco de dados: " + str(e)
+@app.route('/')
+@app.route('/home')
+def index():
+    # Verifica se o usuário está logado
+    if 'username' in session: #se o username estiver na sessão, ele vai para a pagina inicial
+        return render_template('home.html')
     else:
-        return "Método de requisição inválido."
+        return redirect('/login')
+    
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST': #se o metodo for post, ele vai pegar o username e a senha e vai verificar se existe no banco
+        email = request.form['email'] #pega o username do formulario (resquest.form é o formulario submetido dentro do html | username é o nome do campo do formulario)
+        password = encrypt_password(request.form['password']) #pega a senha do formulario e criptografa ela
+        cursor.execute("SELECT * FROM usuario WHERE email = %s AND senha = %s", (email, password)) #executa o comando sql para selecionar o usuario e a senha
+        user = cursor.fetchone() #retorna o usuario e a senha
+        if user:
+            session['username'] = email #se o usuario existir, ele vai criar uma sessão com o username
+            return redirect('/')
+        else:
+            return "Login inválido. <a href='/login'>Tente novamente</a>"
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect('/login')
+
+@app.route('/veiculos')
+def veiculos():
+    if 'username' in session:
+        cursor.execute("SELECT * FROM veiculo")
+        veiculos = cursor.fetchall()
+        return render_template('veiculos.html', veiculos_html=veiculos)
+    else:
+        return redirect('/login')
+
+
+@app.route('/cadastro', methods=['GET', 'POST'])
+def cadastro():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        email = request.form['email']
+        senha = encrypt_password(request.form['senha'])
+        cursor.execute("INSERT INTO usuario (nome, email, senha) VALUES (%s, %s, %s)", (nome, email, senha))
+        db.commit()
+        return redirect('/login')
+    return render_template('cadastro.html')
+
+
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
+
+
