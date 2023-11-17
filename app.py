@@ -47,34 +47,46 @@ def logout():
     session.pop('username', None)
     return redirect('/login')
 
-@app.route('/veiculos')
-def veiculos():
-    if 'username' in session:
-        cursor.execute("SELECT * FROM veiculo")
-        veiculos = cursor.fetchall()
-        return render_template('veiculos.html', veiculos_html=veiculos)
+@app.route('/veiculos') # -----------------------------------------> Corrigido para '/veiculos' em vez de '/veiculos_html'
+def veiculos(): #--------------------------------------------------> Corrigido para 'veiculos' em vez de 'veiculos_html' 
+    if 'username' in session: #------------------------------------> Se o username estiver na sessão, ele vai para a pagina inicial
+        cursor.execute("SELECT * FROM veiculo") # -----------------> Executa o comando SQL para selecionar todos os carros (execute eu pego a terra)
+        veiculos = cursor.fetchall() # ----------------------------> Retorna todos os carros cadastrados (fetchall eu descarrego a terra)
+        return render_template('veiculos.html', veiculos=veiculos) # Corrigido para 'veiculos' em vez de 'veiculos_html'
     else:
         return redirect('/login')
-
+    
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
-    if request.method == 'POST':
-        nome = request.form['nome']
-        email = request.form['email']
-        senha = encrypt_password(request.form['senha'])
-        cursor.execute("INSERT INTO usuario (nome, email, senha) VALUES (%s, %s, %s)", (nome, email, senha))
-        db.commit()
-        return redirect('/login')
-    return render_template('cadastro.html')
-
-@app.route('/relatorio', methods=['GET', 'POST'])
-def relatorio():
     if 'username' in session:
-        cursor.execute("SELECT * FROM veiculo")
-        veiculos = cursor.fetchall()
-        return render_template('relatorio.html', veiculos_html=veiculos)
+        if request.method == 'POST':
+            ano = request.form['ano']
+            placa = request.form['placa']
+            modelo = request.form['modelo']
+            quilometragem = request.form['quilometragem']
+            cor = request.form['cor']
+            marca = request.form['marca']
+            transmissao = request.form['transmissao']
+            classificacao = request.form['classificacao']
+            tipo = request.form['tipo']
+            cursor.execute("INSERT INTO veiculo (ano, placa, modelo, quilometragem, cor, marca, transmissao, classificacao, tipo) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", (ano, placa, modelo, quilometragem, cor, marca, transmissao, classificacao, tipo))
+            db.commit()
+            return redirect('/veiculos')
+        return render_template('/cadastro.html')
     else:
         return redirect('/login')
+
+
+@app.route('/relatorios', methods=['GET', 'POST'])
+def relatorio():
+    if 'username' in session:
+        if request.method == 'POST':
+            data_inicio = request.form['data_inicio']
+            data_fim = request.form['data_fim']
+            cursor.execute("SELECT * FROM aluguel WHERE data_inicio BETWEEN %s AND %s", (data_inicio, data_fim))
+            relatorios = cursor.fetchall()
+            return render_template('relatorios.html', relatorios=relatorios)
+        return render_template('relatorios.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

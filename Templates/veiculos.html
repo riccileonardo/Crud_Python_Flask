@@ -18,7 +18,7 @@
                     <th scope="col">Ano</th>
                     <th scope="col">Placa</th>
                     <th scope="col">Modelo</th>
-                    <th cscope="col">Quilometragem</th>
+                    <th scope="col">Quilometragem</th>
                     <th scope="col">Cor</th>
                     <th scope="col">Transmissão</th>
                     <th scope="col">Classificação</th>
@@ -28,28 +28,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="text-truncate"></td>
-                    <td class="">
-                        <a href="" class="btn btn-sm btn-outline-dark"> Editar
+              {% for veiculo in veiculos %}
+              <tr>
+                  <td>{{ veiculo.id }}</td>
+                  <td class="text-truncate">{{ veiculo.usuario }}</td>
+                  <td class="text-truncate">{{ veiculo.marca }}</td>
+                  <td class="text-truncate">{{ veiculo.ano }}</td>
+                  <td class="text-truncate">{{ veiculo.placa }}</td>
+                  <td class="text-truncate">{{ veiculo.modelo }}</td>
+                  <td class="text-truncate">{{ veiculo.quilometragem }}</td>
+                  <td class="text-truncate">{{ veiculo.cor }}</td>
+                  <td class="text-truncate">{{ veiculo.transmissao }}</td>
+                  <td class="text-truncate">{{ veiculo.classificacao }}</td>
+                  <td class="text-truncate">{{ veiculo.tipo }}</td>
+                  <td class="text-truncate">{{ veiculo.combustivel }}</td>
+                  <td class="">
+                      <a href="/editar_veiculo" class="btn btn-sm btn-outline-dark" id="editar"> Editar
                           <ion-icon name="create-outline"></ion-icon>
-                        </a>
-                        <a href="" class="btn btn-sm btn-outline-danger">Excluir
+                      </a>
+                      <a href="/excluir_veiculo" class="btn btn-sm btn-outline-danger" id="excluir">Excluir
                           <ion-icon name="trash-outline"></ion-icon>
-                        </a>
-                    </td>
-                </tr>
+                      </a>
+                  </td>
+              </tr>
+              {% endfor %}          
             </tbody>
         </table>
     </div>
