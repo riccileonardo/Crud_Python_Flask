@@ -42,10 +42,10 @@ def login():
             return "Login inválido. <a href='/login'>Tente novamente</a>"
     return render_template('login.html')
 
-@app.route('/logout')
-def logout():
-    session.pop('username', None)
-    return redirect('/login')
+@app.route('/logout') # ------------------------------------------> Corrigido para '/logout' em vez de '/logout_html'
+def logout(): #---------------------------------------------------> Corrigido para 'logout' em vez de 'logout_html'
+    session.pop('username', None) # ------------------------------> Se o username estiver na sessão, ele vai para a pagina inicial
+    return redirect('/login') # ----------------------------------> Redireciona para a pagina de login
 
 @app.route('/veiculos') # -----------------------------------------> Corrigido para '/veiculos' em vez de '/veiculos_html'
 def veiculos(): #--------------------------------------------------> Corrigido para 'veiculos' em vez de 'veiculos_html' 
@@ -53,8 +53,8 @@ def veiculos(): #--------------------------------------------------> Corrigido p
         cursor.execute("SELECT * FROM veiculo") # -----------------> Executa o comando SQL para selecionar todos os carros (execute eu pego a terra)
         veiculos = cursor.fetchall() # ----------------------------> Retorna todos os carros cadastrados (fetchall eu descarrego a terra)
         return render_template('veiculos.html', veiculos=veiculos) # Corrigido para 'veiculos' em vez de 'veiculos_html'
-    else:
-        return redirect('/login')
+    else: # -------------------------------------------------------> Se o username não estiver na sessão, ele vai para a pagina de login
+        return redirect('/login') # -------------------------------> Redireciona para a pagina de login
     
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
