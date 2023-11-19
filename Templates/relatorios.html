@@ -12,22 +12,25 @@
       <div class="card">
         <div class="card-body" style="background-color: #f0f0f0;">
           <h5 class="card-title">Relatório de Marca</h5>
-          <form>
+          <form action="/relatorios/marca" method="get">
             <div class="row">
               <div class="col-md-4">
                 <label class="form-label">Data Inicial</label>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" name="data_inicial" required>
               </div>
               <div class="col-md-4">
                 <label class="form-label">Data Final</label>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" name="data_final" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-8">
                 <label class="form-label">Marca</label>
-                <select class="form-control">
-                  <option value="null"></option>
+                <select class="form-control" name="marca" required>
+                  <option>Selecione a Marca</option>
+                  {% for marca in marcas %}
+                  <option value="{{ marca[0] }}">{{ marca[1] }}</option>
+                  {% endfor %}
                 </select>
               </div>
             </div>
@@ -42,22 +45,26 @@
       <div class="card mt-4">
         <div class="card-body" style="background-color: #f0f0f0;">
           <h5 class="card-title">Relatório de Tipo</h5>
-          <form>
+
+          <form action="/relatorios/tipo" method="GET">
             <div class="row">
               <div class="col-md-4">
                 <label class="form-label">Data Inicial</label>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" name="data_inicial" required>
               </div>
               <div class="col-md-4">
                 <label class="form-label">Data Final</label>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" name="data_final" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-8">
                 <label class="form-label">Tipo</label>
-                <select class="form-control">
-                  <option value="null"></option>
+                <select class="form-control" name="id_tipo" required>
+                  <option>Selecione o Tipo</option>
+                  {% for tipo in tipos %}
+                  <option value="{{ tipo[0] }}">{{ tipo[1] }}</option>
+                  {% endfor %}
                 </select>
               </div>
             </div>
