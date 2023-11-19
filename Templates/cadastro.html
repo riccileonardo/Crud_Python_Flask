@@ -8,33 +8,33 @@
         
         <div class="form-group">
           <label for="ano">Ano:</label>
-          <input type="number" class="form-control" id="ano" name="ano">
+          <input type="number" class="form-control" id="ano" name="ano" required>
         </div>
 
         <div class="form-group">
           <label for="placa">Placa:</label>
           <input type="text" name="placa" class="form-control text-left" id="placa" inlength="7" maxlength="7"
-            title="Digite exatamente 7 caracteres">
+            title="Digite exatamente 7 caracteres" required>
         </div>
 
         <div class="form-group">
           <label for="modelo">Modelo:</label>
-          <input type="text" class="form-control" id="modelo" name="modelo">
+          <input type="text" class="form-control" id="modelo" name="modelo" required>
         </div>
 
         <div class="form-group">
           <label for="quilometragem">Quilometragem:</label>
-          <input type="number" class="form-control" id="quilometragem" name="quilometragem">
+          <input type="number" class="form-control" id="quilometragem" name="quilometragem" required>
         </div>
 
         <div class="form-group">
           <label for="cor">Cor:</label>
-          <input type="text" class="form-control" id="cor" name="cor">
+          <input type="text" class="form-control" id="cor" name="cor" required>
         </div>
 
         <div class="form-group">
           <label for="marca">Marca:</label>
-          <select class="form-select" id="marca" name="id_marca">
+          <select class="form-select" id="marca" name="id_marca" required>
             <option>Selecione uma Marca</option>
             {% for marca in marcas %}
             <option value="{{ marca[0] }}">{{ marca[1] }}</option>
@@ -44,7 +44,7 @@
 
         <div class="form-group mt-1,5">
           <label for="transmissao">Transmissão</label>
-          <select class="form-select" id="transmissao" name="id_transmissao">
+          <select class="form-select" id="transmissao" name="id_transmissao" required>
             <option>Selecione uma Transmissão</option>
             {% for transmissao in transmissoes %}
             <option value="{{ transmissao[0] }}">{{ transmissao[1] }}</option>
@@ -54,7 +54,7 @@
 
         <div class="form-group mt-1,5">
           <label for="classificacao">Classificação</label>
-          <select class="form-select" id="classificacao" name="id_classificacao">
+          <select class="form-select" id="classificacao" name="id_classificacao" required>
             <option>Selecione um Classificação</option>
             {% for classificacao in classificacoes %}
             <option value="{{ classificacao[0] }}">{{ classificacao[1] }}</option>
@@ -64,7 +64,7 @@
 
         <div class="form-group mt-1.5">
           <label for="tipo">Tipo</label>
-          <select class="form-select" id="tipo" name="id_tipo">
+          <select class="form-select" id="tipo" name="id_tipo" required>
             <option>Selecione um Tipo</option>
             {% for tipo in tipos %}
             <option value="{{ tipo[0] }}">{{ tipo[1] }}</option>
