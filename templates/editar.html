@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% block title %}Editar Tesla{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form action="/veiculos/{{ veiculo[0] }}/editar" method="POST">
+        
+        <div class="form-group">
+          <label for="ano">Ano:</label>
+          <input type="number" class="form-control" id="ano" name="ano" value="{{ veiculo[9] }}">
+        </div>
+
+        <div class="form-group">
+          <label for="placa">Placa:</label>
+          <input type="text" name="placa" class="form-control text-left" id="placa" inlength="7" maxlength="7"
+            title="Digite exatamente 7 caracteres" value="{{ veiculo[1] }}">
+        </div>
+
+        <div class="form-group">
+          <label for="modelo">Modelo:</label>
+          <input type="text" class="form-control" id="modelo" name="modelo" value="{{ veiculo[10] }}">
+        </div>
+
+        <div class="form-group">
+          <label for="quilometragem">Quilometragem:</label>
+          <input type="number" class="form-control" id="quilometragem" name="quilometragem" value="{{ veiculo[2] }}">
+        </div>
+
+        <div class="form-group">
+          <label for="cor">Cor:</label>
+          <input type="text" class="form-control" id="cor" name="cor" value="{{ veiculo[3] }}">
+        </div>
+
+        <div class="form-group">
+          <label for="marca">Marca:</label>
+          <select class="form-select" id="marca" name="id_marca">
+            {% for marca in marcas %}
+            <option value="{{ marca[0] }}" {% if marca[0] == veiculo[8] %}selected{% endif %}>{{ marca[1] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group mt-1,5">
+          <label for="transmissao">Transmissão</label>
+          <select class="form-select" id="transmissao" name="id_transmissao">
+            {% for transmissao in transmissoes %}
+            <option value="{{ transmissao[0] }}" {% if transmissao[0] == veiculo[5] %}selected{% endif %}>{{ transmissao[1] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group mt-1,5">
+          <label for="classificacao">Classificação</label>
+          <select class="form-select" id="classificacao" name="id_classificacao">
+            {% for classificacao in classificacoes %}
+            <option value="{{ classificacao[0] }}" {% if classificacao[0] == veiculo[6] %}selected{% endif %}>{{ classificacao[1] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group mt-1.5">
+          <label for="tipo">Tipo</label>
+          <select class="form-select" id="tipo" name="id_tipo">
+            {% for tipo in tipos %}
+            <option value="{{ tipo[0] }}" {% if tipo[0] == veiculo[7] %}selected{% endif %}>{{ tipo[1] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-dark mt-2">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

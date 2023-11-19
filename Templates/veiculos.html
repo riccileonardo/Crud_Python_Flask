@@ -41,12 +41,14 @@
                   <td class="text-truncate">{{ veiculo[9] }}</td>
                   <td class="text-truncate">{{ veiculo[10] }}</td>
                   <td class="">
-                      <a href="/editar_veiculo" class="btn btn-sm btn-outline-dark" id="editar"> Editar
+                      <a href="/veiculos/{{ veiculo[0] }}/editar" class="btn btn-sm btn-outline-dark" id="editar"> Editar
                           <ion-icon name="create-outline"></ion-icon>
                       </a>
-                      <a href="/excluir_veiculo" class="btn btn-sm btn-outline-danger" id="excluir">Excluir
+                      <form method="POST" action="/veiculos/{{ veiculo[0] }}/delete" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-outline-danger" id="excluir" onclick="return confirm('Deseja realmente excluir este veículo?')">Excluir
                           <ion-icon name="trash-outline"></ion-icon>
-                      </a>
+                      </form>
+
                   </td>
               </tr>
               {% endfor %}          

@@ -130,6 +130,49 @@ def relatorio():
             relatorios = cursor.fetchall()
             return render_template('relatorios.html', relatorios=relatorios)
         return render_template('relatorios.html')
+    
+@app.route('/veiculos/<id_veiculo>/delete', methods=['POST'])
+def excluir(id_veiculo):
+    if 'username' in session:
+        cursor.execute("DELETE FROM veiculo WHERE id_veiculo = %s", (id_veiculo,))
+        db.commit()
+        return redirect('/veiculos')
+
+@app.route('/veiculos/<id_veiculo>/editar', methods=['GET', 'POST'])
+def editar(id_veiculo):
+    if 'username' in session:
+        if request.method == 'POST':
+            ano = request.form['ano']
+            placa = request.form['placa']
+            modelo = request.form['modelo']
+            quilometragem = request.form['quilometragem']
+            cor = request.form['cor']
+            id_marca = request.form['id_marca']
+            id_transmissao = request.form['id_transmissao']
+            id_classificacao = request.form['id_classificacao']
+            id_tipo = request.form['id_tipo']
+            cursor.execute("""
+                UPDATE veiculo
+                SET ano = %s, placa = %s, modelo = %s, quilometragem = %s, cor = %s,
+                id_marca = %s, id_transmissao = %s, id_classificacao = %s, id_tipo = %s
+                WHERE id_veiculo = %s
+                """, (ano, placa, modelo, quilometragem, cor, id_marca, id_transmissao, id_classificacao, id_tipo, id_veiculo)
+            )
+            db.commit()
+            return redirect('/veiculos')
+        
+        cursor.execute("SELECT * FROM veiculo WHERE id_veiculo = %s", (id_veiculo,))
+        veiculo = cursor.fetchone()
+        cursor.execute("SELECT id_transmissao, nome from transmissao")
+        transmissao = cursor.fetchall()
+        cursor.execute("SELECT id_classificacao, nome from classificacao")
+        classificacao = cursor.fetchall()
+        cursor.execute("SELECT id_tipo, nome from tipo")
+        tipo = cursor.fetchall()
+        cursor.execute("SELECT id_marca, nome from marca")
+        marca = cursor.fetchall()
+        return render_template('editar.html', transmissoes=transmissao, classificacoes=classificacao, tipos=tipo, marcas=marca, veiculo=veiculo)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
