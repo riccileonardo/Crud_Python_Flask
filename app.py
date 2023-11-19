@@ -19,6 +19,15 @@ def encrypt_password(password):
     sha256.update(password.encode('utf-8'))
     return sha256.hexdigest() # Retorna a senha criptografada em hexadecimal
 
+# Função para pegar o id do usuário para depois eu usar.
+def get_user_id(username):
+    cursor.execute("SELECT id_usuario FROM usuario WHERE email = %s", (username,))
+    result = cursor.fetchone()
+    if result:
+        return result[0]
+    else:
+        return None
+
 @app.route('/')
 @app.route('/home')
 def index():
@@ -50,7 +59,28 @@ def logout(): #---------------------------------------------------> Corrigido pa
 @app.route('/veiculos') # -----------------------------------------> Corrigido para '/veiculos' em vez de '/veiculos_html'
 def veiculos(): #--------------------------------------------------> Corrigido para 'veiculos' em vez de 'veiculos_html' 
     if 'username' in session: #------------------------------------> Se o username estiver na sessão, ele vai para a pagina inicial
-        cursor.execute("SELECT * FROM veiculo") # -----------------> Executa o comando SQL para selecionar todos os carros (execute eu pego a terra)
+        cursor.execute("""
+            SELECT
+                veiculo.id_veiculo AS id_veiculo,
+                usuario.nome AS nome_usuario,
+                marca.nome AS marca_veiculo,
+                veiculo.ano AS ano_veiculo,
+                veiculo.placa AS placa_veiculo,
+                veiculo.modelo AS modelo_veiculo,
+                veiculo.quilometragem AS quilometragem_veiculo,
+                veiculo.cor AS cor_veiculo,
+                transmissao.nome AS transmissao_veiculo,
+                classificacao.nome AS classificacao_veiculo,
+                tipo.nome AS tipo_do_veiculo
+            FROM
+                veiculo
+                JOIN usuario ON veiculo.id_usuario = usuario.id_usuario
+                JOIN marca ON veiculo.id_marca = marca.id_marca
+                JOIN transmissao ON veiculo.id_transmissao = transmissao.id_transmissao
+                JOIN classificacao ON veiculo.id_classificacao = classificacao.id_classificacao
+                JOIN tipo ON veiculo.id_tipo = tipo.id_tipo
+        """)
+ #----> Executa o comando SQL para selecionar todos os carros (execute eu pego a terra)
         veiculos = cursor.fetchall() # ----------------------------> Retorna todos os carros cadastrados (fetchall eu descarrego a terra)
         return render_template('veiculos.html', veiculos=veiculos) # Corrigido para 'veiculos' em vez de 'veiculos_html'
     else: # -------------------------------------------------------> Se o username não estiver na sessão, ele vai para a pagina de login
@@ -60,19 +90,32 @@ def veiculos(): #--------------------------------------------------> Corrigido p
 def cadastro():
     if 'username' in session:
         if request.method == 'POST':
+            id_usuario = get_user_id(str(session['username']))
             ano = request.form['ano']
             placa = request.form['placa']
             modelo = request.form['modelo']
             quilometragem = request.form['quilometragem']
             cor = request.form['cor']
-            marca = request.form['marca']
-            transmissao = request.form['transmissao']
-            classificacao = request.form['classificacao']
-            tipo = request.form['tipo']
-            cursor.execute("INSERT INTO veiculo (ano, placa, modelo, quilometragem, cor, marca, transmissao, classificacao, tipo) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", (ano, placa, modelo, quilometragem, cor, marca, transmissao, classificacao, tipo))
+            id_marca = request.form['id_marca']
+            id_transmissao = request.form['id_transmissao']
+            id_classificacao = request.form['id_classificacao']
+            id_tipo = request.form['id_tipo']
+            cursor.execute("""
+            INSERT INTO veiculo (ano, placa, modelo, quilometragem, cor, id_marca, id_transmissao, id_classificacao, id_tipo, id_usuario)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (ano, placa, modelo, quilometragem, cor, id_marca, id_transmissao, id_classificacao, id_tipo, id_usuario))
             db.commit()
             return redirect('/veiculos')
-        return render_template('/cadastro.html')
+        
+        cursor.execute("SELECT id_transmissao, nome from transmissao")
+        transmissao = cursor.fetchall()
+        cursor.execute("SELECT id_classificacao, nome from classificacao")
+        classificacao = cursor.fetchall()
+        cursor.execute("SELECT id_tipo, nome from tipo")
+        tipo = cursor.fetchall()
+        cursor.execute("SELECT id_marca, nome from marca")
+        marca = cursor.fetchall()
+        return render_template('/cadastro.html', transmissoes=transmissao, classificacoes=classificacao, tipos=tipo, marcas=marca)
     else:
         return redirect('/login')
 
