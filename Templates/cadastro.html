@@ -4,7 +4,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <form action="/processar" method="POST">
+      <form action="/cadastro" method="POST">
         <div class="form-group">
           <label for="ano">Ano:</label>
           <input type="number" class="form-control" id="ano" name="ano">
@@ -28,34 +28,29 @@
           <div class="form-group">
             <label for="marca">Marca:</label>
             <select class="form-select" id="marca" name="marca">
+              <option value="null"></option>
               <!--Inserir o For do Backend -->
-              <option value="1">Qualquer</option>
-              <option value="xptoo">Qualquer2</option>
             </select>
           </div>
           <div class="form-group mt-1,5">
             <label for="transmissao">Transmissão</label>
             <select class="form-select" id="transmissao" name="transmissao">
-              <option value="automatico">Automático</option>
-              <option value="manual">Manual</option>
+              <option value="null"></option>
+              <!--Inserir o For do Backend -->
             </select>
           </div>
           <div class="form-group mt-1,5">
             <label for="classificacao">Classificação</label>
             <select class="form-select" id="classificacao" name="classificacao">
               <option value="null"></option>
-              <option value="usado">Usado</option>
-              <option value="semi-novo">Semi-novo</option>
-              <option value="novo">Novo</option>
+              <!--Inserir o For do Backend -->
             </select>
           </div>
           <div class="form-group mt-1.5">
             <label for="tipo">Tipo</label>
             <select class="form-select" id="tipo" name="tipo">
               <option value="null"></option>
-              <option value="combustao">Combustão</option>
-              <option value="eletrico">Elétrico</option>
-              <option value="hibrido">Híbrido</option>
+              <!--Inserir o For do Backend -->
             </select>
           </div>
           <button type="submit" class="btn btn-dark mt-2">Enviar</button>

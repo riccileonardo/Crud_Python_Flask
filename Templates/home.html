@@ -1,72 +1,80 @@
 {% extends 'layout.html' %}
 {% block title %}Cadastro Tesla{% endblock %}
-{% block content %} 
-  <div class="container mt-5">
+{% block content %}
+<div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
             <h2>Bem Vindos</h2>
-            <p>Este é um Sistema de Gerenciamento Tesla, onde a inovação se encontra com <br> a eficiência para acompanhar todos os carros que dão entrada na nossa família <br> elétrica de veículos."</p>
+            <p>Este é um Sistema de Gerenciamento Tesla, onde a inovação se encontra com <br> a eficiência para
+                acompanhar todos os carros que dão entrada na nossa família <br> elétrica de veículos."</p>
             <br>
-            <p>Este projeto é resultado de um trabalho para a disciplina de Banco de Dados, <br> Mestrado pelo professor Francisco e desenvolvido pelos alunos:</p>
+            <p>Este projeto é resultado de um trabalho para a disciplina de Banco de Dados, <br> Mestrado pelo professor
+                Francisco e desenvolvido pelos alunos:</p>
             <br>
             <p><ion-icon name="person"></ion-icon> Leonardo Lopes Ricci</p>
             <p><ion-icon name="person"></ion-icon> Guilherme de Carvalho</p>
             <p><ion-icon name="person"></ion-icon> Kimberly</p>
-            
-            <!-- Coluna esquerda com texto -->
+            <p><ion-icon name="person"></ion-icon> Julio</p>
         </div>
         <div class="col-md-6">
-          <div class="image-container">
-              <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" >
-                <img src="../static/Imagens/tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
-                  <div class="carousel-inner">
-                      <div class="carousel-item active" data-bs-interval="1000">
-                        <img src="../static/Imagens/Model-Y.png" class="d-block w-100" alt="Tesla Modelo Y">
-                          <div class="carousel-caption d-none d-md-block">
-                              <h5 class="carousel-text">Tesla Modelo Y</h5>
-                          </div>
-                      </div>
-                      <div class="carousel-item" data-bs-interval="2000">
-                         <img src="../static/Imagens/Model-X.png" class="d-block w-100" alt="Tesla Modelo X">
-                          <div class="carousel-caption d-none d-md-block">
-                              <h5 class="carousel-text">Tesla Modelo X</h5>
-                          </div>
-                      </div>
-                      <div class="carousel-item" data-bs-interval="3000">
-                          <img src="../static/Imagens/Model-S.png" class="d-block w-100" alt="Tesla Modelo S">
-                          <div class="carousel-caption d-none d-md-block">
-                              <h5 class="carousel-text">Tesla Modelo S</h5>
-                          </div>
-                      </div>
-                      <div class="carousel-item" data-bs-interval="4000">
-                          <img src="../static/Imagens/Model-3.png" class="d-block w-100" alt="Tesla Modelo 3">
-                          <div class="carousel-caption d-none d-md-block">
-                              <h5 class="carousel-text">Tesla Modelo 3</h5>
-                          </div>
-                      </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Anterior</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Próximo</span>
-                  </button>
-                  <br>
-                  <h5>Liderando a Revolução dos Veículos Elétricos</h5>
-                  <p>A Tesla é uma pioneira na indústria automobilística, redefinindo-a com veículos elétricos de alto desempenho e tecnologia avançada. Sua dedicação à sustentabilidade e inovação se reflete em uma diversificada gama de modelos.</p>
-              </div>
-              <!-- Fim do script 01 (Carrossel) -->
-          </div>
-      </div>      
+            <div class="image-container">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <img src="../static/Imagens/tesla.png" alt="Logo da Tesla" width="150" height="75" class="">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="1000">
+                            <img src="../static/Imagens/Model-Y.png" class="d-block w-100" alt="Tesla Modelo Y">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="carousel-text">Tesla Modelo Y</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="../static/Imagens/Model-X.png" class="d-block w-100" alt="Tesla Modelo X">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="carousel-text">Tesla Modelo X</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="../static/Imagens/Model-S.png" class="d-block w-100" alt="Tesla Modelo S">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="carousel-text">Tesla Modelo S</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="../static/Imagens/Model-3.png" class="d-block w-100" alt="Tesla Modelo 3">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="carousel-text">Tesla Modelo 3</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Próximo</span>
+                    </button>
+                    <br>
+                    <h5>Liderando a Revolução dos Veículos Elétricos</h5>
+                    <p>A Tesla é uma pioneira na indústria automobilística, redefinindo-a com veículos elétricos de alto
+                        desempenho e tecnologia avançada. Sua dedicação à sustentabilidade e inovação se reflete em uma
+                        diversificada gama de modelos.</p>
+                </div>
+                <!-- Fim do script 01 (Carrossel) -->
+            </div>
+        </div>
     </div>
 </div>
 <style>
     .image-container {
-        background-color: #f0f0f0; /* Cor de fundo desejada */
-        text-align: center; /* Alinha o texto no centro da div */
-        padding: 20px; /* Espaçamento interno para o conteúdo */
+        background-color: #f0f0f0;
+        /* Cor de fundo desejada */
+        text-align: center;
+        /* Alinha o texto no centro da div */
+        padding: 20px;
+        /* Espaçamento interno para o conteúdo */
     }
 
     .carousel-caption {

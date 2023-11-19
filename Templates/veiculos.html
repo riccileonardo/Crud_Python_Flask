@@ -23,25 +23,23 @@
                     <th scope="col">Transmissão</th>
                     <th scope="col">Classificação</th>
                     <th scope="col">Tipo</th>
-                    <th scope="col">Combustível</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
               {% for veiculo in veiculos %}
               <tr>
-                  <td>{{ veiculo.id }}</td>
-                  <td class="text-truncate">{{ veiculo.usuario }}</td>
-                  <td class="text-truncate">{{ veiculo.marca }}</td>
-                  <td class="text-truncate">{{ veiculo.ano }}</td>
-                  <td class="text-truncate">{{ veiculo.placa }}</td>
-                  <td class="text-truncate">{{ veiculo.modelo }}</td>
-                  <td class="text-truncate">{{ veiculo.quilometragem }}</td>
-                  <td class="text-truncate">{{ veiculo.cor }}</td>
-                  <td class="text-truncate">{{ veiculo.transmissao }}</td>
-                  <td class="text-truncate">{{ veiculo.classificacao }}</td>
-                  <td class="text-truncate">{{ veiculo.tipo }}</td>
-                  <td class="text-truncate">{{ veiculo.combustivel }}</td>
+                  <td>{{ veiculo[0] }}</td>
+                  <td class="text-truncate">{{ veiculo[1] }}</td>
+                  <td class="text-truncate">{{ veiculo[2] }}</td>
+                  <td class="text-truncate">{{ veiculo[3] }}</td>
+                  <td class="text-truncate">{{ veiculo[4] }}</td>
+                  <td class="text-truncate">{{ veiculo[5] }}</td>
+                  <td class="text-truncate">{{ veiculo[6] }}</td>
+                  <td class="text-truncate">{{ veiculo[7] }}</td>
+                  <td class="text-truncate">{{ veiculo[8] }}</td>
+                  <td class="text-truncate">{{ veiculo[9] }}</td>
+                  <td class="text-truncate">{{ veiculo[10] }}</td>
                   <td class="">
                       <a href="/editar_veiculo" class="btn btn-sm btn-outline-dark" id="editar"> Editar
                           <ion-icon name="create-outline"></ion-icon>

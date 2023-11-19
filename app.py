@@ -36,8 +36,8 @@ def login():
         cursor.execute("SELECT * FROM usuario WHERE email = %s AND senha = %s", (email, password)) #executa o comando sql para selecionar o usuario e a senha
         user = cursor.fetchone() #retorna o usuario e a senha
         if user:
-            session['username'] = email #se o usuario existir, ele vai criar uma sessão com o username
-            return redirect('/')
+            session['username'] = email # ------------------------> Se o usuario existir, ele vai criar uma sessão com o username
+            return redirect('/') # --------------------------------> Redireciona para a pagina inicial
         else:
             return "Login inválido. <a href='/login'>Tente novamente</a>"
     return render_template('login.html')

@@ -1,75 +1,75 @@
 {% extends 'layout.html' %}
 {% block title %}Relatórios{% endblock %}
 {% block content %}
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h2>Relatórios</h2>
-      </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Relatórios</h2>
     </div>
-    <div class="row justify-content-center mt-4">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-body" style="background-color: #f0f0f0;">
-            <h5 class="card-title">Relatório de Marca</h5>
-            <form>
-              <div class="row">
-                <div class="col-md-4">
-                  <label class="form-label">Data Inicial</label>
-                  <input type="date" class="form-control">
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">Data Final</label>
-                  <input type="date" class="form-control">
-                </div>
+  </div>
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body" style="background-color: #f0f0f0;">
+          <h5 class="card-title">Relatório de Marca</h5>
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label">Data Inicial</label>
+                <input type="date" class="form-control">
               </div>
-              <div class="row">
-                <div class="col-md-8">
-                  <label class="form-label">Marca</label>
-                  <select class="form-control">
-                    <option value="null"></option>
-                  </select>
-                </div>
+              <div class="col-md-4">
+                <label class="form-label">Data Final</label>
+                <input type="date" class="form-control">
               </div>
-              <div class="row">
-                <div class="col-md-2">
-                  <button type="submit" class="btn btn-outline-dark mt-3">Gerar Relatório</button>
-                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <label class="form-label">Marca</label>
+                <select class="form-control">
+                  <option value="null"></option>
+                </select>
               </div>
-            </form>
-          </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <button type="submit" class="btn btn-outline-dark mt-3">Gerar Relatório</button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="card mt-4">
-          <div class="card-body" style="background-color: #f0f0f0;">
-            <h5 class="card-title">Relatório de Tipo</h5>
-            <form>
-              <div class="row">
-                <div class="col-md-4">
-                  <label class="form-label">Data Inicial</label>
-                  <input type="date" class="form-control">
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">Data Final</label>
-                  <input type="date" class="form-control">
-                </div>
+      </div>
+      <div class="card mt-4">
+        <div class="card-body" style="background-color: #f0f0f0;">
+          <h5 class="card-title">Relatório de Tipo</h5>
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label">Data Inicial</label>
+                <input type="date" class="form-control">
               </div>
-              <div class="row">
-                <div class="col-md-8">
-                  <label class="form-label">Tipo</label>
-                  <select class="form-control">
-                    <option value="null"></option>
-                  </select>
-                </div>
+              <div class="col-md-4">
+                <label class="form-label">Data Final</label>
+                <input type="date" class="form-control">
               </div>
-              <div class="row">
-                <div class="col-md-2">
-                  <button type="submit" class="btn btn-outline-dark mt-3">Gerar Relatório</button>
-                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <label class="form-label">Tipo</label>
+                <select class="form-control">
+                  <option value="null"></option>
+                </select>
               </div>
-            </form>
-          </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <button type="submit" class="btn btn-outline-dark mt-3">Gerar Relatório</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
 {% endblock %}
