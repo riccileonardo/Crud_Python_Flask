@@ -49,3 +49,6 @@ def logout():
     return redirect('/login')
 
 # Restante do código para adicionar e exibir carros permanece o mesmo
+EOFErrorgv,afdgmadga,DeprecationWarning
+
+adf,klgadçgmadçfgm,
